@@ -8,8 +8,8 @@
 #define PIN_RELEE 25      // Pin de salida para el relé
 
 // Configuración WIFI Y MQTT
-const char* nombre_wifi = "NETLIFE-esmsrcevallosb1";
-const char* contraseña_wifi = "0801472630";
+const char* nombre_wifi = "*****";
+const char* contraseña_wifi = "********";
 
 const char* direccion_mqtt = "broker.hivemq.com";
 const int puerto_mqtt = 1883;
