@@ -174,4 +174,3 @@ Distribuido bajo la licencia **MIT**.
 ---
 
 ¡Con este sistema podrás proteger tus dispositivos contra sobrevoltajes peligrosos de forma económica y confiable!
-
