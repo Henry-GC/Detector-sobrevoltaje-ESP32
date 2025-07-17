@@ -1,0 +1,294 @@
+[
+    {
+        "id": "e629656d063836cb",
+        "type": "tab",
+        "label": "Flow 4",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "82d09fb5705e6d03",
+        "type": "ui_gauge",
+        "z": "e629656d063836cb",
+        "name": "",
+        "group": "0d4536c43853dda7",
+        "order": 1,
+        "width": 6,
+        "height": 4,
+        "gtype": "gage",
+        "title": "VOLTAJE",
+        "label": "voltios",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "110",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "80",
+        "seg2": "90",
+        "diff": false,
+        "className": "",
+        "x": 580,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "522008b8ded69369",
+        "type": "ui_led",
+        "z": "e629656d063836cb",
+        "order": 1,
+        "group": "0c32f5dacb3dde7d",
+        "width": 6,
+        "height": 3,
+        "label": "SOBRETENSION!!!",
+        "labelPlacement": "right",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "ON",
+                "valueType": "str"
+            },
+            {
+                "color": "#808080",
+                "value": "OFF",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 590,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "7878c01691019842",
+        "type": "mqtt in",
+        "z": "e629656d063836cb",
+        "name": "",
+        "topic": "micro/6to/voltaje",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e9638f6501781283",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 340,
+        "y": 140,
+        "wires": [
+            [
+                "82d09fb5705e6d03"
+            ]
+        ]
+    },
+    {
+        "id": "c160f571c301ca5b",
+        "type": "inject",
+        "z": "e629656d063836cb",
+        "name": "Simulacion de voltaje",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "micro/6to/voltaje",
+        "payload": "91",
+        "payloadType": "num",
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "82d09fb5705e6d03"
+            ]
+        ]
+    },
+    {
+        "id": "48ec791d9a9f4e0b",
+        "type": "mqtt in",
+        "z": "e629656d063836cb",
+        "name": "",
+        "topic": "micro/6to/sobretension",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "e9638f6501781283",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 300,
+        "y": 220,
+        "wires": [
+            [
+                "522008b8ded69369"
+            ]
+        ]
+    },
+    {
+        "id": "af09ad0c8b83d86c",
+        "type": "inject",
+        "z": "e629656d063836cb",
+        "name": "PRUEBA",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ON",
+        "payloadType": "str",
+        "x": 320,
+        "y": 300,
+        "wires": [
+            [
+                "522008b8ded69369"
+            ]
+        ]
+    },
+    {
+        "id": "895a10ab784d5551",
+        "type": "mqtt out",
+        "z": "e629656d063836cb",
+        "name": "",
+        "topic": "micro/6to/apagado",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "e9638f6501781283",
+        "x": 650,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c9b0cdf0961c12b1",
+        "type": "ui_switch",
+        "z": "e629656d063836cb",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "9f762625f122de05",
+        "order": 1,
+        "width": "3",
+        "height": "2",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "ENCENDER",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "APAGAR",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 370,
+        "y": 420,
+        "wires": [
+            [
+                "895a10ab784d5551"
+            ]
+        ]
+    },
+    {
+        "id": "0d4536c43853dda7",
+        "type": "ui_group",
+        "name": "MEDIDOR DE TENSION",
+        "tab": "3f3796429a965688",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0c32f5dacb3dde7d",
+        "type": "ui_group",
+        "name": "INDICADOR LED",
+        "tab": "3f3796429a965688",
+        "order": 2,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "e9638f6501781283",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "test.mosquitto.org",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "9f762625f122de05",
+        "type": "ui_group",
+        "name": "BOTON APAGADO",
+        "tab": "3f3796429a965688",
+        "order": 3,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3f3796429a965688",
+        "type": "ui_tab",
+        "name": "CORTAPICOS",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    }
+]
